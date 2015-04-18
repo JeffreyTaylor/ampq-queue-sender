@@ -1,0 +1,107 @@
+<script>
+
+    $('body').chardinJs('start')
+
+
+</script>
+
+
+<div class="row header text-center">
+    <h3>Espresso Queue sender</h3>
+</div>
+
+
+<div class="row">
+
+
+    <div class="col-md-6 col-md-offset-3">
+
+        <form name="form">
+
+            <div class="form-group">
+
+                <div class="col-md-12" style="margin-bottom:3px;"
+                     data-intro="Enter the queue server details"
+                     data-position="right">
+
+                    <label for="server-url" class="control-label col-md-4">Server Url:</label>
+
+                    <div class="col-md-8 input-field">
+                        <input data-ng-model="vm.server" type="text" class="form-control"
+                               name="server-url"
+                               id="server-url"
+                               placeholder="Server Url"
+                               data-validator="required"
+                               data-required-error-message="This field is required">
+
+                    </div>
+
+
+                    <label for="queue-name" class="control-label col-md-4">Queue Name:</label>
+
+                    <div class="col-md-8 input-field">
+                        <input data-ng-model="vm.queueName" class="form-control" type="text"
+                               name="queue-name"
+                               id="queue-name"
+                               placeholder="Server Name"
+                               data-validator="required"
+                               data-required-error-message="This field is required">
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-12" style="margin-bottom:3px;"
+                     data-intro="Enter json message"
+                     data-position="right">
+
+
+                    <div class="col-md-12"
+                         data-ng-model="vm.input"
+                         ui-ace="{
+                            useWrapMode : true,
+                            showGutter: true,
+                            theme:'xcode',
+                            mode: 'json',
+                            onLoad: vm.editorLoaded
+                        }" style="height:250px; border-radius: 4px; border: 1px solid darkgray; margin-top:3px;">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-12 text-center" style="margin-bottom:3px">
+                    <span ng-if="vm.isValidJson" class="text-success">
+                        valid json
+                    </span>
+                    <span ng-if="!vm.isValidJson" class="text-danger">
+                        invalid json
+                    </span>
+                </div>
+
+
+                <button class="btn col-xs-12"
+                        validation-submit="form"
+                        data-ng-disabled="!vm.isValidJson"
+                        data-ng-click="vm.sendMessage()">{{vm.sendButtonText}}
+                </button>
+
+                <div class="col-xs-12" style="margin-top:5px;">
+                    <alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" close="vm.closeAlert($index)">
+                        {{alert.message}}
+                    </alert>
+                </div>
+
+
+            </div>
+
+        </form>
+
+
+    </div>
+
+</div>

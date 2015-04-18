@@ -1,0 +1,57 @@
+
+body {
+    background: white;
+}
+
+.navbar {
+    background: #F3F3F3;
+}
+
+.navbar-brand {
+    color: black !important;
+}
+
+.panel {
+    border: 1px solid  black;
+}
+
+.panel-heading {
+    background: #F3F3F3 !important;
+    border: none;
+}
+
+.panel-title {
+    color:black;
+}
+
+.panel-group {
+    margin-bottom:5px;
+}
+
+.panel-body {
+    background: white;
+    color:black;
+}
+
+.button {
+    -moz-appearance: button;
+    /* Firefox */
+    -webkit-appearance: button;
+    /* Safari and Chrome */
+    padding: 10px;
+    margin: 10px;
+    width: 70px;
+}
+
+.btn:disabled {
+    pointer-events: all;
+    cursor: not-allowed;
+}
+
+.validation-valid {
+    display:none;
+}
+
+.validation-invalid {
+    color: #FF4136;
+}
