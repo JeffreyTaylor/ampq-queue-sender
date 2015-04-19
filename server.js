@@ -30,9 +30,17 @@ app.post('/message', function (req, res) {
     console.log(queueName);
     console.log(data);
 
-    sender.send(server, queueName, data);
+    sender.send(server, queueName, data, function (error, data) {
 
-    res.sendStatus(200);
+        if (error) { res.sendStatus(500) }
+        else {
+
+            res.sendStatus(200);
+
+        }
+
+    });
+
 
 
 });
